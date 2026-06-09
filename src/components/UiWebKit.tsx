@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import testlabLogo from "@/assets/testlab-logo.png";
 
 const NAV_ITEMS = [
   { label: "Problem", id: "problem" },
@@ -132,11 +133,13 @@ function Header() {
     <header className="sticky top-0 z-40 border-b border-border bg-dark-accent backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-10">
         <a href="#top" className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-dark-accent text-xs font-semibold uppercase tracking-[0.2em] text-white">
-            WS
-          </span>
+          <img
+            src={testlabLogo}
+            alt="TestLab logo"
+            className="h-10 w-10 rounded-full object-cover"
+          />
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Logo Placeholder</p>
+            <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">TestLab</p>
             <p className="text-sm font-medium text-foreground">Workflow Sandbox</p>
           </div>
         </a>
