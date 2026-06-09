@@ -254,19 +254,18 @@ function ConceptVideoSection() {
         <SectionTitle
           id="concept-video"
           title="Concept Video"
-          subtitle="Centered video placeholder with minimal styling and a simple play affordance."
+          subtitle="Embedded concept video with inline playback directly in the case study."
         />
         <div className="mt-14">
           <div className="relative overflow-hidden rounded-[2.25rem] border border-border bg-card shadow-[0_20px_60px_rgba(16,32,48,0.06)]">
-            <PlaceholderPanel
-              label="Video Thumbnail Placeholder"
-              className="min-h-[24rem] rounded-none border-0 bg-[linear-gradient(135deg,rgba(121,153,174,0.12),rgba(170,196,213,0.08))]"
+            <iframe
+              className="aspect-video w-full"
+              src="https://www.youtube.com/embed/Q_Pp8TqVGf8"
+              title="Concept Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
             />
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white text-2xl text-dark-accent shadow-lg">
-                ▶
-              </div>
-            </div>
           </div>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in
