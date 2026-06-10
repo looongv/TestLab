@@ -275,12 +275,15 @@ function ConceptVideoSection() {
   return (
     <DividerSection>
       <div className="mx-auto max-w-6xl text-center">
-        <SectionTitle
-          id="concept-video"
-          title="Concept Video"
-          subtitle="Embedded concept video with inline playback directly in the case study."
-        />
-        <div className="mt-14">
+        <div id="concept-video" className="scroll-mt-28">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+            See It In Action
+          </p>
+          <h2 className="text-4xl font-semibold tracking-[-0.05em] text-foreground md:text-6xl">
+            Concept Video
+          </h2>
+        </div>
+        <div className="mt-8">
           <div className="relative overflow-hidden rounded-[2.25rem] border border-border bg-card shadow-[0_20px_60px_rgba(16,32,48,0.06)]">
             <iframe
               className="aspect-video w-full"
@@ -292,8 +295,7 @@ function ConceptVideoSection() {
             />
           </div>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in
-            eros elementum tristique.
+            A fun video to demonstrate our idea!
           </p>
         </div>
       </div>
