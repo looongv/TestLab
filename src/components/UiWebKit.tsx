@@ -1,7 +1,11 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import anxietyImage from "@/assets/anxiety.png";
 import challengeImage from "@/assets/challenge.png";
+import digitalMockupImage from "@/assets/digitalmockup.png";
+import ideationImage from "@/assets/ideation.png";
 import meetingImage from "@/assets/meeting.png";
+import paperProtoImage from "@/assets/paperproto.png";
+import posterImage from "@/assets/poster.png";
 import testlabLogo from "@/assets/testlab-logo.png";
 
 const NAV_ITEMS = [
@@ -15,12 +19,12 @@ const NAV_ITEMS = [
 ];
 
 const TIMELINE_STEPS = [
-  "Research",
-  "Sketches",
-  "Paper Prototype",
-  "Digital Prototype",
-  "User Testing",
-  "Final Design",
+  "Ideation",
+  "User Research",
+  "Task Analysis",
+  "Concept Design",
+  "Prototyping",
+  "Evaluation & Final Design",
 ];
 
 const RESEARCH_CARDS = [
@@ -39,6 +43,13 @@ const RESEARCH_CARDS = [
     description:
       "Practical exposure to realistic work scenarios was repeatedly described as more valuable than reading documentation alone.",
   },
+];
+
+const PROCESS_ARTIFACTS = [
+  { label: "Ideation", image: ideationImage, alt: "Ideation artifact" },
+  { label: "Paper Prototype", image: paperProtoImage, alt: "Paper prototype" },
+  { label: "Digital Mockup", image: digitalMockupImage, alt: "Digital mockup" },
+  { label: "Poster", image: posterImage, alt: "Poster artifact" },
 ];
 
 const GALLERY_ITEMS = [1, 2, 3, 4, 5, 6];
@@ -419,19 +430,35 @@ function ResearchSection() {
 }
 
 function ProcessSection() {
+  const [activeArtifactIndex, setActiveArtifactIndex] = useState(0);
+  const activeArtifact = PROCESS_ARTIFACTS[activeArtifactIndex];
+
+  function showPreviousArtifact() {
+    setActiveArtifactIndex((currentIndex) =>
+      currentIndex === 0 ? PROCESS_ARTIFACTS.length - 1 : currentIndex - 1,
+    );
+  }
+
+  function showNextArtifact() {
+    setActiveArtifactIndex((currentIndex) =>
+      currentIndex === PROCESS_ARTIFACTS.length - 1 ? 0 : currentIndex + 1,
+    );
+  }
+
   return (
     <DividerSection>
       <div className="mx-auto max-w-7xl">
         <SectionTitle
           id="process"
           title="Design Process"
+          eyebrowText="From Idea to Iteration"
           subtitle="A simple visual timeline followed by lightweight placeholders for artifacts."
         />
         <div className="mt-14 overflow-x-auto pb-4">
           <div className="flex min-w-[64rem] items-center gap-4">
             {TIMELINE_STEPS.map((step, index) => (
               <div key={step} className="flex items-center gap-4">
-                <div className="min-w-40 rounded-full border border-border bg-white px-5 py-4 text-center text-sm font-medium text-foreground">
+                <div className="min-w-40 rounded-full border border-border bg-card px-5 py-4 text-center text-sm font-medium text-foreground">
                   {step}
                 </div>
                 {index < TIMELINE_STEPS.length - 1 ? <div className="text-xl text-primary">→</div> : null}
@@ -439,11 +466,59 @@ function ProcessSection() {
             ))}
           </div>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          <PlaceholderPanel label="Sketch Placeholder" className="min-h-[15rem]" />
-          <PlaceholderPanel label="Paper Prototype Placeholder" className="min-h-[15rem]" />
-          <PlaceholderPanel label="Digital Prototype Placeholder" className="min-h-[15rem]" />
-          <PlaceholderPanel label="Testing Artifact Placeholder" className="min-h-[15rem]" />
+        <div className="mx-auto mt-14 max-w-5xl">
+          <div className="relative overflow-hidden rounded-[2.25rem] border border-border bg-card px-6 py-6 shadow-[0_20px_60px_rgba(16,32,48,0.06)]">
+            <div className="absolute inset-y-0 left-4 z-20 flex items-center">
+              <button
+                type="button"
+                onClick={showPreviousArtifact}
+                aria-label="Show previous process artifact"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background/85 text-xl text-foreground transition hover:border-primary hover:text-primary"
+              >
+                ←
+              </button>
+            </div>
+            <div className="absolute inset-y-0 right-4 z-20 flex items-center">
+              <button
+                type="button"
+                onClick={showNextArtifact}
+                aria-label="Show next process artifact"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background/85 text-xl text-foreground transition hover:border-primary hover:text-primary"
+              >
+                →
+              </button>
+            </div>
+            <div className="relative h-[25rem] sm:h-[31rem]">
+              {PROCESS_ARTIFACTS.map((artifact, index) => (
+                <img
+                  key={artifact.label}
+                  src={artifact.image}
+                  alt={artifact.alt}
+                  className={`absolute inset-0 h-full w-full object-contain px-14 py-4 transition-opacity duration-500 ease-out ${
+                    index === activeArtifactIndex ? "opacity-100" : "pointer-events-none opacity-0"
+                  }`}
+                />
+              ))}
+            </div>
+            <div className="mt-5 flex items-center justify-between gap-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
+                {activeArtifact.label}
+              </p>
+              <div className="flex items-center gap-2">
+                {PROCESS_ARTIFACTS.map((artifact, index) => (
+                  <button
+                    key={artifact.label}
+                    type="button"
+                    onClick={() => setActiveArtifactIndex(index)}
+                    aria-label={`Show ${artifact.label}`}
+                    className={`h-2.5 rounded-full transition ${
+                      index === activeArtifactIndex ? "w-8 bg-primary" : "w-2.5 bg-border hover:bg-primary/70"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </DividerSection>
