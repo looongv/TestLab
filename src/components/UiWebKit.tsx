@@ -9,8 +9,11 @@ import dm4Image from "@/assets/dm4.png";
 import dm5Image from "@/assets/dm5.png";
 import dm6Image from "@/assets/dm6.png";
 import ideationImage from "@/assets/ideation.png";
+import longImage from "@/assets/long.png";
+import mateoImage from "@/assets/mateo.png";
 import meetingImage from "@/assets/meeting.png";
 import paperProtoImage from "@/assets/paperproto.png";
+import peterImage from "@/assets/peter.png";
 import posterImage from "@/assets/poster.png";
 import testlabLogo from "@/assets/testlab-logo.png";
 
@@ -97,7 +100,26 @@ const FINAL_DESIGN_IMAGES = [
   },
 ];
 
-const TEAM_MEMBERS = [1, 2, 3];
+const TEAM_MEMBERS = [
+  {
+    image: longImage,
+    alt: "Long team photo",
+    name: "Long Vu",
+    role: "Team-Lead",
+  },
+  {
+    image: peterImage,
+    alt: "Peter team photo",
+    name: "Peter Pan",
+    role: "Yippy Yapper / Editor",
+  },
+  {
+    image: mateoImage,
+    alt: "Mateo team photo",
+    name: "Mateo da_robinson",
+    role: "idk",
+  },
+];
 
 function SectionEyebrow({ children }: { children: ReactNode }) {
   return (
@@ -607,17 +629,20 @@ function TeamSection() {
         <SectionTitle
           id="team"
           title="Meet The Team"
-          subtitle="Simple profile cards with placeholder photos, names, and roles."
+          eyebrowText="The Crew"
+          subtitle="We call ourselves... Fellas in Seattle"
         />
         <div className="mt-14 grid gap-8 md:grid-cols-3">
           {TEAM_MEMBERS.map((member) => (
-            <article key={member} className="rounded-[2rem] border border-border bg-card px-6 py-8 text-center">
-              <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full border border-border bg-white text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                Photo
-              </div>
-              <h3 className="mt-6 text-xl font-medium text-foreground">Name Placeholder</h3>
+            <article key={member.alt} className="rounded-[2rem] border border-border bg-card px-6 py-8 text-center">
+              <img
+                src={member.image}
+                alt={member.alt}
+                className="mx-auto h-28 w-28 rounded-full object-cover"
+              />
+              <h3 className="mt-6 text-xl font-medium text-foreground">{member.name}</h3>
               <p className="mt-2 text-sm uppercase tracking-[0.18em] text-muted-foreground">
-                Role Placeholder
+                {member.role}
               </p>
             </article>
           ))}
