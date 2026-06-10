@@ -2,6 +2,12 @@ import { useState, type ReactNode } from "react";
 import anxietyImage from "@/assets/anxiety.png";
 import challengeImage from "@/assets/challenge.png";
 import digitalMockupImage from "@/assets/digitalmockup.png";
+import dm1Image from "@/assets/dm1.png";
+import dm2Image from "@/assets/dm2.png";
+import dm3Image from "@/assets/dm3.png";
+import dm4Image from "@/assets/dm4.png";
+import dm5Image from "@/assets/dm5.png";
+import dm6Image from "@/assets/dm6.png";
 import ideationImage from "@/assets/ideation.png";
 import meetingImage from "@/assets/meeting.png";
 import paperProtoImage from "@/assets/paperproto.png";
@@ -52,7 +58,44 @@ const PROCESS_ARTIFACTS = [
   { label: "Poster", image: posterImage, alt: "Poster artifact" },
 ];
 
-const GALLERY_ITEMS = [1, 2, 3, 4, 5, 6];
+const FINAL_DESIGN_IMAGES = [
+  {
+    image: dm1Image,
+    alt: "Final design mockup 1",
+    title: "Starting Screen",
+    description: "Add a unique description for this mockup here.",
+  },
+  {
+    image: dm2Image,
+    alt: "Final design mockup 2",
+    title: "Screen Title 2",
+    description: "Add a unique description for this mockup here.",
+  },
+  {
+    image: dm3Image,
+    alt: "Final design mockup 3",
+    title: "Screen Title 3",
+    description: "Add a unique description for this mockup here.",
+  },
+  {
+    image: dm4Image,
+    alt: "Final design mockup 4",
+    title: "Screen Title 4",
+    description: "Add a unique description for this mockup here.",
+  },
+  {
+    image: dm5Image,
+    alt: "Final design mockup 5",
+    title: "Screen Title 5",
+    description: "Add a unique description for this mockup here.",
+  },
+  {
+    image: dm6Image,
+    alt: "Final design mockup 6",
+    title: "Screen Title 6",
+    description: "Add a unique description for this mockup here.",
+  },
+];
 
 const TEAM_MEMBERS = [1, 2, 3];
 
@@ -531,23 +574,23 @@ function FinalDesignSection() {
       <div className="mx-auto max-w-7xl">
         <SectionTitle
           id="final-design"
-          title="Final Design / Mockups"
-          subtitle="A clean gallery for mockups, screenshots, and polished visual presentation."
+          title="Final Design"
+          eyebrowText="Digital Mockups"
+          subtitle="High-fidelity mockups showcasing our proposed Workflow Sandbox solution."
         />
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-          <PlaceholderPanel label="Large Mockup Placeholder" className="min-h-[30rem]" />
-          <div className="grid gap-6">
-            <PlaceholderPanel label="Prototype Placeholder" className="min-h-[14rem]" />
-            <PlaceholderPanel label="Demo Placeholder" className="min-h-[14rem]" />
-          </div>
-        </div>
-        <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {GALLERY_ITEMS.map((item) => (
-            <article key={item} className="rounded-[1.75rem] border border-border bg-card p-5">
-              <PlaceholderPanel label="Screenshot Placeholder" className="min-h-[14rem]" />
-              <h3 className="mt-5 text-lg font-medium text-foreground">Title Placeholder</h3>
+        <div className="mx-auto mt-14 grid max-w-7xl gap-6 lg:grid-cols-2">
+          {FINAL_DESIGN_IMAGES.map((item) => (
+            <article key={item.alt} className="rounded-[1.75rem] border border-border bg-card p-5 shadow-[0_16px_40px_rgba(16,32,48,0.06)]">
+              <div className="overflow-hidden rounded-[1.25rem] bg-background/10">
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  className="block w-full h-auto"
+                />
+              </div>
+              <h3 className="mt-5 text-lg font-medium text-foreground">{item.title}</h3>
               <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                {item.description}
               </p>
             </article>
           ))}
