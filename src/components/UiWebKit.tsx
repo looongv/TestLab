@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import anxietyImage from "@/assets/anxiety.png";
+import challengeImage from "@/assets/challenge.png";
 import testlabLogo from "@/assets/testlab-logo.png";
 
 const NAV_ITEMS = [
@@ -42,15 +43,17 @@ function SectionTitle({
   title,
   subtitle,
   showEyebrow = true,
+  eyebrowText,
 }: {
   id: string;
   title: string;
   subtitle?: string;
   showEyebrow?: boolean;
+  eyebrowText?: string;
 }) {
   return (
     <div id={id} className="scroll-mt-28">
-      {showEyebrow ? <SectionEyebrow>{title}</SectionEyebrow> : null}
+      {showEyebrow ? <SectionEyebrow>{eyebrowText ?? title}</SectionEyebrow> : null}
       <h2 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.05em] text-foreground md:text-6xl">
         {title}
       </h2>
@@ -245,7 +248,7 @@ function ProblemSection() {
           </div>
           <div className="rounded-[2rem] border border-border bg-card/90 p-8 shadow-[0_20px_50px_rgba(16,32,48,0.08)] lg:p-10">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
-              Core Tension
+              The Challenge
             </p>
             <h3 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.04em] text-foreground md:text-4xl">
               Onboarding explains the system, but it rarely simulates the pressure of using it.
@@ -310,25 +313,41 @@ function SolutionSection() {
         <SectionTitle
           id="solution"
           title="Solution Statement"
-          subtitle="An editorial-style storytelling section rather than a feature or marketing layout."
+          eyebrowText="The Response"
         />
-        <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-start">
-          <PlaceholderPanel label="Solution Image Placeholder" className="min-h-[34rem]" />
-          <div className="max-w-2xl">
-            <h3 className="text-3xl font-semibold tracking-[-0.04em] text-foreground md:text-4xl">
-              Solution statement placeholder with clear hierarchy and generous spacing.
+        <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-stretch">
+          <div className="flex min-h-[34rem] items-center justify-center rounded-[2rem] border border-border bg-card/90 px-6 py-8 shadow-[0_20px_50px_rgba(16,32,48,0.08)]">
+            <img
+              src={challengeImage}
+              alt="Challenge illustration"
+              className="h-full max-h-[30rem] w-full object-contain"
+            />
+          </div>
+          <div className="flex min-h-[34rem] flex-col justify-center rounded-[2rem] border border-border bg-card/90 p-8 shadow-[0_20px_50px_rgba(16,32,48,0.08)] lg:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
+              How It Helps
+            </p>
+            <h3 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.04em] text-foreground md:text-4xl">
+              Workflow Sandbox gives new hires a safer way to build confidence before real production work begins.
             </h3>
-            <div className="mt-6 space-y-6 text-base leading-8 text-muted-foreground">
+            <div className="mt-6 max-w-2xl space-y-6 text-base leading-8 text-muted-foreground">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in
-                eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum
-                nulla, ut commodo diam libero vitae erat.
+                Workflow Sandbox provides new hires with a safe environment to practice realistic workplace tasks before contributing to production systems. Through interactive simulations and feedback, users learn how to navigate common roadblocks, identify appropriate sources of help, and develop the confidence needed to contribute effectively to real company workflows.
               </p>
               <p>
-                Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae
-                risus tristique posuere. Integer posuere erat a ante venenatis dapibus posuere velit
-                aliquet.
+                By reducing the cost of mistakes during early learning, the system encourages experimentation, supports better decision-making, and helps users transition from passive onboarding to active participation.
               </p>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-3 text-sm">
+              <span className="rounded-full border border-border bg-card px-4 py-2 text-muted-foreground">
+                Safe practice
+              </span>
+              <span className="rounded-full border border-border bg-card px-4 py-2 text-muted-foreground">
+                Realistic scenarios
+              </span>
+              <span className="rounded-full border border-border bg-card px-4 py-2 text-muted-foreground">
+                Confidence building
+              </span>
             </div>
           </div>
         </div>
