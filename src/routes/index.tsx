@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "A polished placeholder case-study website for Workflow Sandbox following the provided wireframe.",
+          "A CSE 440 Project.",
       },
       { property: "og:title", content: "Workflow Sandbox — UX Case Study" },
       {
