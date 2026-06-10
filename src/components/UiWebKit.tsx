@@ -41,14 +41,16 @@ function SectionTitle({
   id,
   title,
   subtitle,
+  showEyebrow = true,
 }: {
   id: string;
   title: string;
   subtitle?: string;
+  showEyebrow?: boolean;
 }) {
   return (
     <div id={id} className="scroll-mt-28">
-      <SectionEyebrow>{title}</SectionEyebrow>
+      {showEyebrow ? <SectionEyebrow>{title}</SectionEyebrow> : null}
       <h2 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.05em] text-foreground md:text-6xl">
         {title}
       </h2>
@@ -220,22 +222,30 @@ function ProblemSection() {
   return (
     <DividerSection>
       <div className="mx-auto max-w-7xl">
-        <SectionTitle
+        <div
           id="problem"
-          title="Problem Statement"
-          subtitle="New hires often finish onboarding with the basics, but still feel unprepared for the ambiguity of real production work."
-        />
-        <div className="mt-14 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div className="flex min-h-[28rem] items-center justify-center rounded-[2rem] border border-border bg-card px-6 py-8">
+          className="grid gap-6 border-b border-border/70 pb-10 scroll-mt-28 lg:grid-cols-[0.85fr_1.15fr] lg:items-end"
+        >
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
+              The Challenge
+            </p>
+            <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.05em] text-foreground md:text-6xl">
+              Problem Statement
+            </h2>
+          </div>
+        </div>
+        <div className="mt-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+          <div className="flex min-h-[28rem] items-center justify-center rounded-[2rem] border border-border bg-card/90 px-6 py-8 shadow-[0_20px_50px_rgba(16,32,48,0.08)]">
             <img
               src={anxietyImage}
               alt="Anxiety illustration"
               className="h-full max-h-[24rem] w-full object-contain"
             />
           </div>
-          <div className="rounded-[2rem] border border-border/80 bg-white/4 p-8 shadow-[0_24px_60px_rgba(16,32,48,0.08)] lg:p-10">
+          <div className="rounded-[2rem] border border-border bg-card/90 p-8 shadow-[0_20px_50px_rgba(16,32,48,0.08)] lg:p-10">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
-              The Core Tension
+              Core Tension
             </p>
             <h3 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.04em] text-foreground md:text-4xl">
               Onboarding explains the system, but it rarely simulates the pressure of using it.
