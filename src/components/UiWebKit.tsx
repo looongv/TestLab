@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import anxietyImage from "@/assets/anxiety.png";
 import testlabLogo from "@/assets/testlab-logo.png";
 
 const NAV_ITEMS = [
@@ -222,25 +223,37 @@ function ProblemSection() {
         <SectionTitle
           id="problem"
           title="Problem Statement"
-          subtitle="A two-column section with readable text width and a restrained visual placeholder."
+          subtitle="New hires often finish onboarding with the basics, but still feel unprepared for the ambiguity of real production work."
         />
-        <div className="mt-14 grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-          <PlaceholderPanel label="Problem Image Placeholder" className="min-h-[28rem]" />
-          <div className="max-w-2xl space-y-6 text-base leading-8 text-muted-foreground">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in
-              eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum
-              nulla, ut commodo diam libero vitae erat.
+        <div className="mt-14 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div className="flex min-h-[28rem] items-center justify-center rounded-[2rem] border border-border bg-card px-6 py-8">
+            <img
+              src={anxietyImage}
+              alt="Anxiety illustration"
+              className="h-full max-h-[24rem] w-full object-contain"
+            />
+          </div>
+          <div className="rounded-[2rem] border border-border/80 bg-white/4 p-8 shadow-[0_24px_60px_rgba(16,32,48,0.08)] lg:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
+              The Core Tension
             </p>
-            <p>
-              Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae
-              risus tristique posuere. Proin laoreet mattis sagittis. Nam condimentum bibendum
-              varius.
+            <h3 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.04em] text-foreground md:text-4xl">
+              Onboarding explains the system, but it rarely simulates the pressure of using it.
+            </h3>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
+              Many new hires complete onboarding successfully but still struggle when transitioning to real work. Common challenges include unfamiliar tools, workflows, incomplete or unclear documentation, and uncertainty about when or who to ask for help. These obstacles can slow productivity and reduce confidence, especially when mistakes in production environments may have costly consequences. As a result, new hires often hesitate to experiment, limiting opportunities to learn through experience and develop the confidence needed to become effective contributors.
             </p>
-            <p>
-              Aliquam erat volutpat. Curabitur blandit tempus porttitor. Integer posuere erat a ante
-              venenatis dapibus posuere velit aliquet.
-            </p>
+            <div className="mt-8 flex flex-wrap gap-3 text-sm">
+              <span className="rounded-full border border-border bg-card px-4 py-2 text-muted-foreground">
+                Unclear workflows
+              </span>
+              <span className="rounded-full border border-border bg-card px-4 py-2 text-muted-foreground">
+                Fear of mistakes
+              </span>
+              <span className="rounded-full border border-border bg-card px-4 py-2 text-muted-foreground">
+                Low confidence
+              </span>
+            </div>
           </div>
         </div>
       </div>
