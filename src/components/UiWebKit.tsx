@@ -233,10 +233,7 @@ function Header() {
             alt="TestLab logo"
             className="h-10 w-10 rounded-full object-cover"
           />
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">TestLab</p>
-            <p className="text-sm font-medium text-foreground">Workflow Sandbox</p>
-          </div>
+          <p className="text-lg font-semibold text-foreground">TestLab</p>
         </a>
 
         <nav className="hidden items-center gap-6 text-sm text-muted-foreground lg:flex">
@@ -654,24 +651,28 @@ function TeamSection() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border bg-white px-6 py-10 lg:px-10">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Logo Placeholder</p>
-          <p className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-foreground">
-            Workflow Sandbox
-          </p>
+    <footer className="border-t border-border bg-background px-6 py-12 lg:px-10">
+      <div className="mx-auto max-w-7xl rounded-[2rem] border border-border bg-card/80 px-6 py-8 shadow-[0_20px_60px_rgba(16,32,48,0.06)] lg:px-8">
+        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <div className="flex items-center gap-4">
+            <img
+              src={testlabLogo}
+              alt="TestLab logo"
+              className="h-14 w-14 rounded-full object-cover"
+            />
+            <p className="text-2xl font-semibold tracking-[-0.04em] text-foreground">TestLab</p>
+          </div>
+          <div className="flex flex-wrap gap-5 text-sm text-muted-foreground">
+            {NAV_ITEMS.map((item) => (
+              <a key={item.id} href={`#${item.id}`} className="transition hover:text-foreground">
+                {item.label}
+              </a>
+            ))}
+          </div>
         </div>
-        <div className="flex flex-wrap gap-5 text-sm text-muted-foreground">
-          {NAV_ITEMS.map((item) => (
-            <a key={item.id} href={`#${item.id}`} className="transition hover:text-foreground">
-              {item.label}
-            </a>
-          ))}
+        <div className="mt-8 border-t border-border pt-6 text-sm text-muted-foreground">
+          CSE 440 Spring 2026 · Fellas in Seattle
         </div>
-      </div>
-      <div className="mx-auto mt-8 max-w-7xl border-t border-border pt-6 text-sm text-muted-foreground">
-        Contact Placeholder · Copyright Placeholder
       </div>
     </footer>
   );
