@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import anxietyImage from "@/assets/anxiety.png";
 import challengeImage from "@/assets/challenge.png";
+import meetingImage from "@/assets/meeting.png";
 import testlabLogo from "@/assets/testlab-logo.png";
 
 const NAV_ITEMS = [
@@ -23,9 +24,21 @@ const TIMELINE_STEPS = [
 ];
 
 const RESEARCH_CARDS = [
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  "Suspendisse varius enim in eros elementum tristique.",
-  "Duis cursus mi quis viverra ornare, eros dolor interdum nulla.",
+  {
+    title: "Mentorship is Critical",
+    description:
+      "Participants consistently relied on mentors, teammates, and coworkers when documentation was unclear, incomplete, or lacked context.",
+  },
+  {
+    title: 'Understanding the "Why" Matters',
+    description:
+      "Many new hires could complete onboarding tasks but struggled to understand how tools and processes connected to the larger company workflow.",
+  },
+  {
+    title: "Hands-On Experience Builds Confidence",
+    description:
+      "Practical exposure to realistic work scenarios was repeatedly described as more valuable than reading documentation alone.",
+  },
 ];
 
 const GALLERY_ITEMS = [1, 2, 3, 4, 5, 6];
@@ -363,30 +376,41 @@ function ResearchSection() {
         <SectionTitle
           id="research"
           title="User Research"
-          subtitle="Research visualization, quote placeholders, and key insights in a light case-study layout."
+          subtitle="Interviews and directed storytelling with software engineering interns and new hires revealed recurring challenges during onboarding and the transition to real company work."
         />
-        <div className="mt-14 grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-          <PlaceholderPanel
-            label="Research Diagram Placeholder"
-            className="min-h-[28rem]"
-          />
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="flex min-h-[28rem] flex-col items-center justify-center rounded-[2rem] border border-border bg-card px-6 py-8 text-center">
+            <img
+              src={meetingImage}
+              alt="User research meeting"
+              className="h-full max-h-[24rem] w-full object-contain"
+            />
+          </div>
           <div className="space-y-4">
             {RESEARCH_CARDS.map((card) => (
-              <article key={card} className="rounded-[1.75rem] border border-border bg-card px-6 py-6">
+              <article
+                key={card.title}
+                className="rounded-[1.75rem] border border-border bg-card px-6 py-6"
+              >
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                   Insight
                 </p>
-                <p className="mt-3 text-base leading-7 text-foreground">{card}</p>
+                <h3 className="mt-3 text-lg font-medium text-foreground">{card.title}</h3>
+                <p className="mt-2 text-base leading-7 text-muted-foreground">
+                  {card.description}
+                </p>
               </article>
             ))}
           </div>
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-[1.75rem] border border-border bg-white px-6 py-8 text-lg leading-8 text-foreground shadow-[0_12px_36px_rgba(16,32,48,0.04)]">
-            “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.”
+          <div className="rounded-[1.75rem] border border-border bg-card px-6 py-8 text-lg leading-8 text-foreground shadow-[0_12px_36px_rgba(16,32,48,0.04)]">
+            “The most helpful part of onboarding was having mentors and teammates available when I
+            got stuck.”
           </div>
-          <div className="rounded-[1.75rem] border border-border bg-white px-6 py-8 text-lg leading-8 text-foreground shadow-[0_12px_36px_rgba(16,32,48,0.04)]">
-            “Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.”
+          <div className="rounded-[1.75rem] border border-border bg-card px-6 py-8 text-lg leading-8 text-foreground shadow-[0_12px_36px_rgba(16,32,48,0.04)]">
+            “I could complete the task, but I didn't understand why we were using the tool or how
+            it fit into the bigger picture.”
           </div>
         </div>
       </div>
