@@ -158,9 +158,11 @@ function SectionTitle({
 function ButtonLink({
   children,
   variant = "solid",
+  href = "#",
 }: {
   children: ReactNode;
   variant?: "solid" | "outline";
+  href?: string;
 }) {
   const styles =
     variant === "solid"
@@ -169,7 +171,7 @@ function ButtonLink({
 
   return (
     <a
-      href="#"
+      href={href}
       className={`inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ${styles}`}
     >
       {children}
@@ -288,7 +290,7 @@ function HeroSection() {
             A CSE 440 Project.
           </p>
           <div className="mt-10">
-            <ButtonLink>Watch Concept Video</ButtonLink>
+            <ButtonLink href="#concept-video">Watch Concept Video</ButtonLink>
           </div>
         </div>
 
