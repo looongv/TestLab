@@ -182,23 +182,18 @@ function Sidebar() {
 
 function HeroSection() {
   return (
-    <DividerSection>
+    <section className="relative flex min-h-[calc(100vh-5rem)] items-center border-b border-border px-6 py-12 lg:px-10 lg:py-16">
       <div className="absolute inset-x-0 top-0 -z-10 h-[30rem] bg-[radial-gradient(circle_at_top_left,var(--color-primary-soft),transparent_42%),radial-gradient(circle_at_top_right,var(--color-secondary-soft),transparent_38%)]" />
-      <div className="mx-auto grid max-w-7xl gap-14 lg:min-h-[calc(100vh-5rem)] lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div>
-          <div className="flex h-16 w-16 items-center justify-center rounded-[1.4rem] border border-border bg-white text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground shadow-sm">
-            Logo
-          </div>
-          <h1 className="mt-8 max-w-4xl text-5xl font-semibold tracking-[-0.07em] text-foreground sm:text-6xl lg:text-8xl">
-            Product name placeholder for a polished HCI case study.
+          <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.07em] text-[#FFFFFF] sm:text-6xl lg:text-8xl">
+            TestLab
           </h1>
-          <p className="mt-6 max-w-xl text-2xl leading-tight text-dark-accent">
-            Catchphrase placeholder with a calm, editorial rhythm.
+          <p className="mt-6 max-w-xl text-2xl leading-tight text-[#A8B3C7]">
+            Bridging the gap between onboarding and real work.
           </p>
-          <p className="mt-6 max-w-xl text-base leading-8 text-muted-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in
-            eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum
-            nulla, ut commodo diam libero vitae erat.
+          <p className="mt-6 max-w-xl text-base leading-8 text-[#D1D8E5]">
+            A CSE 440 Project.
           </p>
           <div className="mt-10">
             <ButtonLink>Watch Concept Video</ButtonLink>
@@ -207,13 +202,16 @@ function HeroSection() {
 
         <div className="relative">
           <div className="absolute inset-10 rounded-[2.5rem] bg-dark-accent/8 blur-3xl" />
-          <PlaceholderPanel
-            label="Large Product Mockup Placeholder"
-            className="relative min-h-[34rem] rounded-[2.5rem] bg-white/80 shadow-[0_30px_80px_rgba(16,32,48,0.08)]"
-          />
+          <div className="relative flex min-h-[34rem] items-center justify-center rounded-[2.5rem] border border-border bg-card px-6 py-8">
+            <img
+              src={testlabLogo}
+              alt="TestLab logo"
+              className="hero-logo-float w-full max-w-[28rem] object-contain drop-shadow-[0_24px_40px_rgba(16,32,48,0.18)]"
+            />
+          </div>
         </div>
       </div>
-    </DividerSection>
+    </section>
   );
 }
 
